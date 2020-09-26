@@ -14,6 +14,10 @@ import java.io.InputStream;
 @Service
 public class FirebaseInitializer {
 
+    public FirebaseInitializer() throws IOException {
+        this.initDB();
+    }
+
     @PostConstruct
     private void initDB() throws IOException {
         InputStream serviceAccount = this.getClass().getClassLoader()

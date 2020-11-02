@@ -36,4 +36,15 @@ public class AccountControllers {
         return accountRepository.save(account);
     }
 
+    @PostMapping("/loginAccount")
+    public Account loginAccount(String username, String password) throws ExecutionException, InterruptedException {
+        List<Account> accounts = this.getAllAccounts();
+        for (Account account: accounts) {
+            if (account.getUserName().equals(username) && account.getPassword().equals(password)){
+                return account;
+            }
+        }
+        return null;
+    }
+
 }

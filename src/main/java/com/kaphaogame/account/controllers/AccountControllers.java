@@ -1,18 +1,11 @@
 package com.kaphaogame.account.controllers;
 
-import com.google.api.core.ApiFuture;
-import com.google.cloud.firestore.CollectionReference;
-import com.google.cloud.firestore.DocumentReference;
-import com.google.cloud.firestore.DocumentSnapshot;
-import com.google.cloud.firestore.QuerySnapshot;
-import com.kaphaogame.account.FirebaseInitializer;
+
 import com.kaphaogame.account.models.Account;
+import com.kaphaogame.account.models.AccountLaddaBakery;
 import com.kaphaogame.account.repository.AccountRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -27,7 +20,7 @@ public class AccountControllers {
     }
 
     @GetMapping("/getAllAccounts")
-    public List<Account> getAllAccounts() throws ExecutionException, InterruptedException {
+    public List<Account> getAllAccounts() {
         return accountRepository.getAllAccounts();
     }
 
@@ -42,6 +35,22 @@ public class AccountControllers {
         for (Account account: accounts) {
             if (account.getUserName().equals(username) && account.getPassword().equals(password)){
                 return account;
+            }
+        }
+        return null;
+    }
+
+    @PostMapping("/laddaBakery/registerAccount")
+    public AccountLaddaBakery registerAccountLaddaBakery(AccountLaddaBakery accountLaddaBakery) {
+        return accountRepository.saveLaddaBakery(accountLaddaBakery);
+    }
+
+    @PostMapping("/laddaBakery/loginAccount")
+    public AccountLaddaBakery loginAccountLaddaBakery(String userName, String password) {
+        List<AccountLaddaBakery> accountLaddaBakeries = this.accountRepository.getAllAccountLaddaBakery();
+        for (AccountLaddaBakery accountLaddaBakery: accountLaddaBakeries) {
+            if (accountLaddaBakery.getUserName().equals(userName) && accountLaddaBakery.getPassword().equals(password)){
+                return accountLaddaBakery;
             }
         }
         return null;

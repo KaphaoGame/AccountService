@@ -5,6 +5,7 @@ import com.google.cloud.firestore.Firestore;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.cloud.FirestoreClient;
+import com.google.firebase.database.*;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -31,7 +32,6 @@ public class FirebaseInitializer {
         if (FirebaseApp.getApps().isEmpty()){
             FirebaseApp.initializeApp(options);
         }
-
     }
 
     public Firestore getFirestore() {

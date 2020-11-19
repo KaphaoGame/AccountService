@@ -38,6 +38,7 @@ public class OrderRepository {
         Order orderRegistering = new Order(order.getOrderNo(), order.getOrderName(), order.getOrderTotalPrice(), order.getOrderAddress()
                                             ,order.getOrderTime(), order.getOrderStatus(), order.getOrderDate(), order.getDeliveryFee());
         ApiFuture<DocumentReference> addedDocRef = db.getFirestore().collection("Orders").add(orderRegistering);
+        orderList.add(orderRegistering);
         return orderRegistering;
     }
 

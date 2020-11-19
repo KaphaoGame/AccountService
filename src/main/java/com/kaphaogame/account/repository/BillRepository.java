@@ -37,8 +37,19 @@ public class BillRepository {
     public Bill createBill(Bill bill){
         Bill billRegistering = new Bill(bill.getBillNo(), bill.getBillAddress(), bill.getBillStatus(), bill.getBillTotalPrice()
                 ,bill.getBillDate(), bill.getBillTime(), bill.getSenderName(), bill.getRecipientName()
-                ,bill.getPaymentMethod());
+                ,bill.getPaymentMethod(), bill.getBillOrderNo());
         ApiFuture<DocumentReference> addedDocRef = db.getFirestore().collection("Bills").add(billRegistering);
+        billList.add(billRegistering);
         return billRegistering;
+    }
+
+    public List<Bill> getAllBillByRecipientName(String recipientName) {
+        List<Bill> bills = new ArrayList<>();
+        for (Bill bill: billList) {
+            if(bill.getRecipientName().equals(recipientName)){
+                bills.add(bill);
+            }
+        }
+        return bills;
     }
 }

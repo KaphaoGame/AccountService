@@ -10,12 +10,14 @@ public class Bill {
     private String senderName;
     private String recipientName;
     private String paymentMethod;
+    private String billOrderNo;
 
     public Bill() {
     }
 
-    public Bill(String billNo, String billAddress, String billStatus, String billTotalPrice, String billDate,
-                String billTime, String senderName, String recipientName, String paymentMethod) {
+    public Bill(String billNo, String billAddress, String billStatus, String billTotalPrice,
+                String billDate, String billTime, String senderName, String recipientName,
+                String paymentMethod, String billOrderNo) {
         this.billNo = billNo;
         this.billAddress = billAddress;
         this.billStatus = billStatus;
@@ -25,6 +27,15 @@ public class Bill {
         this.senderName = senderName;
         this.recipientName = recipientName;
         this.paymentMethod = paymentMethod;
+        this.billOrderNo = billOrderNo;
+    }
+
+    public String getBillOrderNo() {
+        return billOrderNo;
+    }
+
+    public void setBillOrderNo(String billOrderNo) {
+        this.billOrderNo = billOrderNo;
     }
 
     public String getBillNo() {

@@ -64,6 +64,7 @@ public class AccountRepository{
                                                     accountLaddaBakery.getTel(), accountLaddaBakery.getAddress(),
                                                     accountLaddaBakery.getMoreDetail());
         ApiFuture<DocumentReference> addedDocRef = db.getFirestore().collection("AccountLaddaBakery").add(accountRegistering);
+        accountLaddaBakeryList.add(accountRegistering);
         return accountRegistering;
     }
 

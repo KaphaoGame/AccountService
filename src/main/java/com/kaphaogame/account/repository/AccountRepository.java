@@ -55,6 +55,7 @@ public class AccountRepository{
         Account accountRegistering = new Account(account.getFirstName(), account.getLastName(),
                 account.getEmail(), account.getUserName(), account.getPassword(), account.getDisplayName());
         ApiFuture<DocumentReference> addedDocRef = db.getFirestore().collection("Account").add(accountRegistering);
+        accountList.add(accountRegistering);
         return accountRegistering;
     }
 

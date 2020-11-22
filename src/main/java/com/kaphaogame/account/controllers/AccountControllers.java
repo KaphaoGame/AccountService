@@ -36,6 +36,16 @@ public class AccountControllers {
         return accountRepository.save(account);
     }
 
+    @PutMapping("/editAccount")
+    public Account editAccount(Account account) {
+        return accountRepository.save(account);
+    }
+
+    @DeleteMapping("/{username}")
+    public void deleteAccount(Account account) {
+        accountRepository.deleteAccount(account);
+    }
+
     @PostMapping("/loginAccount")
     public Account loginAccount(String username, String password) throws ExecutionException, InterruptedException {
         List<Account> accounts = this.getAllAccounts();

@@ -42,8 +42,8 @@ public class AccountControllers {
     }
 
     @DeleteMapping("/{username}")
-    public void deleteAccount(Account account) {
-        accountRepository.deleteAccount(account);
+    public void deleteAccount(@PathVariable String username) {
+        accountRepository.deleteAccount(username);
     }
 
     @PostMapping("/loginAccount")

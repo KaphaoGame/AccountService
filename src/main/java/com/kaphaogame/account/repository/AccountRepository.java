@@ -40,8 +40,8 @@ public class AccountRepository{
         return accountRegistering;
     }
 
-    public void deleteAccount(Account account) {
-        db.getFirestore().collection("Account").document(account.getUserName()).delete();
+    public void deleteAccount(String username) {
+        db.getFirestore().collection("Account").document(username).delete();
     }
 
 }

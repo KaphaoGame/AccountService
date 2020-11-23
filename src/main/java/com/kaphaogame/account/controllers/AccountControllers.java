@@ -41,7 +41,7 @@ public class AccountControllers {
         return accountRepository.save(account);
     }
 
-    @DeleteMapping("/{username}")
+    @PostMapping("/{username}")
     public void deleteAccount(@PathVariable String username) {
         accountRepository.deleteAccount(username);
     }
